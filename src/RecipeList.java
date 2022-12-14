@@ -2,20 +2,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class RecipeList {
-    private Set<Recipe> recipes = new HashSet<>();
+    private Set<Recipe> recipes;
 
-    public RecipeList (Set<Recipe> recipes) {
+    public RecipeList(Set<Recipe> recipes) {
         this.recipes = recipes;
     }
 
-    public void add (Recipe recipe) {
+    public void add(Recipe recipe) {
         if (recipes.contains(recipe)) {
             throw new RuntimeException("Такой рецепт уже есть!");
         }
         recipes.add(recipe);
     }
 
-    public void remove (Recipe recipe) {
+    public void remove(Recipe recipe) {
         recipes.remove(recipe);
     }
 

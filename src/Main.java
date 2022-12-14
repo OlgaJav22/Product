@@ -1,7 +1,4 @@
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -31,7 +28,32 @@ public class Main {
         recipes.add(pie);
         recipes.add(cake);
         recipes.add(cake1);
-        recipes.add(pie);
         System.out.println(Arrays.toString(recipes.toArray()));
+
+        System.out.println("\n Д/з №2.2");
+        Random random = new Random();
+        Set<Integer> numbers = new HashSet<>();
+        while (numbers.size() < 20) {
+            numbers.add((int) (1001 * Math.random()));
+        }
+        System.out.println(numbers);
+        Iterator<Integer> iterator = numbers.iterator();
+        while (iterator.hasNext()) {
+            Integer number = iterator.next();
+            if (number % 2 == 1) {
+                iterator.remove();
+            }
+        }
+        System.out.println(numbers);
+        System.out.println("Задание 3.2");
+
+        Set<Examples> examples = new HashSet<>();
+        while (examples.size() < 15) {
+            Examples example = new Examples(random.nextInt(8) + 2, random.nextInt(8) + 2);
+            examples.add(example);
+
+            System.out.println(example);
+        }
     }
+
 }
