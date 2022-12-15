@@ -7,6 +7,7 @@ public class Product {
     private String name;
     private double price;
     private double totalKg;
+    Integer count=0;
     private List<Product> products = new ArrayList<>();
 
     Product(String name, double price, double totalKg) {
@@ -25,6 +26,7 @@ public class Product {
         } else {
             throw new RuntimeException("Заполните карточку товара полностью");
         }
+        count++;
     }
 
     public void addProduct(Product name) {
@@ -37,6 +39,10 @@ public class Product {
 
     public String getName() {
         return name;
+    }
+
+    public Integer getCount() {
+        return count;
     }
 
     public double getPrice() {
@@ -70,6 +76,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return "В список добавлены продукты:  " + getName() + ", " + price + " руб., " + totalKg + " кг.";
+        return getName() + ", " + price + " руб., " + totalKg + " кг.";
     }
 }

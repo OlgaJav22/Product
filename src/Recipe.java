@@ -1,20 +1,22 @@
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
 public class Recipe {
     private String name;
     private double totalSumPrice;
-    private List<Product> products;
+    private HashMap <Product, Integer> products1;
 
-    Recipe(String name, List<Product> products, double totalSumPrice) {
+    Recipe(String name,  Product ... products) {
         if (name != null && !name.isEmpty() && !name.isBlank()) {
             this.name = name;
+            this.products1 = new HashMap<>();
         }
-        if (totalSumPrice > 0) {
-            this.totalSumPrice = totalSumPrice;
+        setTotalSumPrice(0.0);
+        for (Product product : products) {
+            setTotalSumPrice(getTotalSumPrice()+product.getPrice());
+            this.products1.put(product, product.getCount());
         }
-        this.products = products;
-
     }
 
     public String getName() {
@@ -25,8 +27,16 @@ public class Recipe {
         return totalSumPrice;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public void setTotalSumPrice(double totalSumPrice) {
+        this.totalSumPrice = totalSumPrice;
+    }
+
+    public HashMap<Product, Integer> getProducts() {
+        return products1;
+    }
+
+    public void setProducts(HashMap<Product, Integer> products) {
+        this.products1 = products;
     }
 
     @Override
@@ -44,6 +54,6 @@ public class Recipe {
 
     @Override
     public String toString() {
-        return "Название рецепта: " + getName();
+        return "Название рецепта: " + getName() + ", сумма затрат " + totalSumPrice + ", список продуктов:  " + products1;
     }
 }
